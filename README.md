@@ -1,4 +1,4 @@
-# new-agent — AI-ready project knowledge framework
+# lore — AI-ready project knowledge framework
 
 A drop-in folder structure + instructions that give any AI coding agent (Claude Code, Cursor, Copilot, pi, Codex…) the context it needs to be effective in a codebase — and a **team of specialized agent personas** that take an idea from napkin to production with clear decisions, handoffs and always-up-to-date docs.
 
