@@ -1,6 +1,6 @@
 # Knowledge index & coverage
 
-Owner: Docs Keeper · Updated by /adopt, /kickoff, /decide, /wrap, /sync-docs.
+Owner: Docs Keeper · Updated by /lore-adopt, /lore-kickoff, /lore-decide, /lore-wrap, /lore-sync-docs.
 Status: `stub` (template only) · `partial` (some facts, has TODO(verify)) · `verified` (checked against code/human).
 
 | Doc | Status | Last verified | Notes |

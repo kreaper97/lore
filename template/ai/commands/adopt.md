@@ -1,4 +1,4 @@
-# /adopt — onboard an existing codebase
+# /lore-adopt — onboard an existing codebase
 
 Lead: Docs Keeper · Helpers: Architect, Security, UX, DevOps, Product · Args: optional focus area (e.g. `backend`).
 Goal: document **everything the code can prove**, ask the human only what it cannot.

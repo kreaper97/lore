@@ -1,4 +1,4 @@
-# /wrap — close the session
+# /lore-wrap — close the session
 
 Lead: Orchestrator + Docs Keeper.
 

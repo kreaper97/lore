@@ -1,4 +1,4 @@
-# /kickoff — start a new project from zero
+# /lore-kickoff — start a new project from zero
 
 Lead: Orchestrator · Helpers: Product, Architect, Security, UX · Args: optional one-line idea.
 Principle: **docs are born from decisions**. Don't fill templates with guesses; create/fill a doc only when something about it has been decided.
@@ -16,12 +16,12 @@ Principle: **docs are born from decisions**. Don't fill templates with guesses; 
 | Domain words | `product/glossary.md` |
 | Features & order | `product/roadmap.md` + one `ai/work/ideas/IDEA-xxx.md` each |
 | Constraints | `product/vision.md` §Constraints, `security/model.md` (if compliance) |
-| Tech choices | `/decide` → ADR → `stack.md`, `architecture/overview.md` |
+| Tech choices | `/lore-decide` → ADR → `stack.md`, `architecture/overview.md` |
 
 Docs nobody has decided anything about stay `stub` in `ai/knowledge/INDEX.md`. That is fine and expected.
 
 ## 3. First decisions
-Propose (don't impose) the minimum set needed to start building: stack, architecture style, hosting. Run each through `/decide`.
+Propose (don't impose) the minimum set needed to start building: stack, architecture style, hosting. Run each through `/lore-decide`.
 Humans approve one-way doors.
 
 ## 4. Close
@@ -29,4 +29,4 @@ Humans approve one-way doors.
 - INDEX.md updated, JOURNAL entry, open questions listed.
 
 ## Growing the docs afterwards
-Every later `/decide`, spec, merged task or incident updates the matching doc (`ai/workflows/doc-sync.md`) and flips its status in INDEX.md `stub → partial → verified`.
+Every later `/lore-decide`, spec, merged task or incident updates the matching doc (`ai/workflows/doc-sync.md`) and flips its status in INDEX.md `stub → partial → verified`.

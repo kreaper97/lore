@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 # Install the AI knowledge framework into any project (new or existing).
-# Usage: scripts/init.sh <target-dir> ["Project Name"] [--force]
+# Usage: lore init [dir] ["Project Name"] [--force]
 #   - Project name defaults to the target folder name.
-#   - Detects whether the target already has code and tells you to run /adopt or /kickoff.
+#   - Detects whether the target already has code and tells you to run /lore-adopt or /lore-kickoff.
 set -euo pipefail
 
 SRC="$(cd "$(dirname "$0")/.." && pwd)/template"
 FORCE=""
 ARGS=()
 for a in "$@"; do [[ "$a" == "--force" ]] && FORCE="--force" || ARGS+=("$a"); done
-TARGET="${ARGS[0]:?usage: init.sh <target-dir> [\"Project Name\"] [--force]}"
+TARGET="${ARGS[0]:?usage: lore init <target-dir> [\"Project Name\"] [--force]}"
 
 mkdir -p "$TARGET"
 TARGET="$(cd "$TARGET" && pwd)"
@@ -58,10 +58,10 @@ write_adapter() {
 }
 
 while IFS='|' read -r name desc args; do
-  write_adapter ".claude/commands/$name.md"       "$name" "$desc" "$args"
-  write_adapter ".pi/prompts/$name.md"            "$name" "$desc" "$args"
-  write_adapter ".cursor/commands/$name.md"       "$name" "$desc" "$args"
-  write_adapter ".github/prompts/$name.prompt.md" "$name" "$desc" "$args"
+  write_adapter ".claude/commands/lore-$name.md"       "$name" "$desc" "$args"
+  write_adapter ".pi/prompts/lore-$name.md"            "$name" "$desc" "$args"
+  write_adapter ".cursor/commands/lore-$name.md"       "$name" "$desc" "$args"
+  write_adapter ".github/prompts/lore-$name.prompt.md" "$name" "$desc" "$args"
 done <<'EOF'
 resume|Session start: load board, journal and coverage; propose next step|
 adopt|Existing codebase: generate all knowledge docs the code can prove|[focus area]
@@ -79,8 +79,8 @@ sed -i.bak "s/{{PROJECT_NAME}}/$ESC_NAME/g" "$TARGET/AGENTS.md" && rm -f "$TARGE
 
 echo
 if [[ -n "$EXISTING" ]]; then
-  echo "Existing code detected. Next: open your agent in $TARGET and run /adopt"
+  echo "Existing code detected. Next: open your agent in $TARGET and run /lore-adopt"
 else
-  echo "Empty project. Next: open your agent in $TARGET and run /kickoff \"<your idea>\""
+  echo "Empty project. Next: open your agent in $TARGET and run /lore-kickoff \"<your idea>\""
 fi
-echo "(Agents without slash commands: just say \"adopt\" / \"kickoff\". Every later session starts with /resume.)"
+echo "(Agents without slash commands: just say \"adopt\" / \"kickoff\". Every later session starts with /lore-resume.)"

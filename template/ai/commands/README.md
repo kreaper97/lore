@@ -6,12 +6,12 @@ Agents without slash commands: the user just says the command name ("adopt", "re
 
 | Command | When | What it does |
 |---|---|---|
-| `/adopt [focus]` | Existing codebase, first time | Deep scan → fills every `ai/knowledge/` doc it can, retro-ADRs, one batch of questions, coverage report |
-| `/kickoff [idea]` | New / empty project | Short interview → creates only the docs decided so far; the rest grow with each decision |
-| `/resume` | Start of every session | Loads board + journal + coverage, says where we are and proposes the next step |
-| `/wrap` | End of a session | Writes the journal entry, updates board & docs touched, lists open questions |
-| `/idea <text>` | Any time | Lifecycle stage 0: captures and triages an idea |
-| `/decide <question>` | Any non-trivial choice | Runs the decision protocol, writes the ADR and **propagates it into the affected docs** |
-| `/sync-docs [area]` | Periodically / after big merges | Audits docs vs code, fixes drift, bumps `Last verified` |
+| `/lore-adopt [focus]` | Existing codebase, first time | Deep scan → fills every `ai/knowledge/` doc it can, retro-ADRs, one batch of questions, coverage report |
+| `/lore-kickoff [idea]` | New / empty project | Short interview → creates only the docs decided so far; the rest grow with each decision |
+| `/lore-resume` | Start of every session | Loads board + journal + coverage, says where we are and proposes the next step |
+| `/lore-wrap` | End of a session | Writes the journal entry, updates board & docs touched, lists open questions |
+| `/lore-idea <text>` | Any time | Lifecycle stage 0: captures and triages an idea |
+| `/lore-decide <question>` | Any non-trivial choice | Runs the decision protocol, writes the ADR and **propagates it into the affected docs** |
+| `/lore-sync-docs [area]` | Periodically / after big merges | Audits docs vs code, fixes drift, bumps `Last verified` |
 
-Mode detection: if `ai/knowledge/INDEX.md` shows every doc as `stub` and there is source code → suggest `/adopt`; if there is no code → suggest `/kickoff`; otherwise → `/resume`.
+Mode detection: if `ai/knowledge/INDEX.md` shows every doc as `stub` and there is source code → suggest `/lore-adopt`; if there is no code → suggest `/lore-kickoff`; otherwise → `/lore-resume`.

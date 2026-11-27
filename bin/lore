@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# lore — AI-ready project knowledge framework CLI
+set -euo pipefail
+
+# Resolve the real repo root even when called through a symlink on PATH
+SELF="$0"
+while [[ -L "$SELF" ]]; do
+  LINK="$(readlink "$SELF")"
+  [[ "$LINK" == /* ]] && SELF="$LINK" || SELF="$(dirname "$SELF")/$LINK"
+done
+ROOT="$(cd "$(dirname "$SELF")/.." && pwd)"
+VERSION="0.1.0"
+
+usage() {
+  cat <<EOF
+lore $VERSION — give any repo a knowledge base and agent crew
+
+Usage:
+  lore init [dir] ["Project Name"] [--force]   Install lore into dir (default: .)
+  lore version                                 Print version
+  lore help                                    Show this help
+
+After init, open your agent in the project and run:
+  /lore-adopt     existing codebase → document everything the code proves
+  /lore-kickoff   new project → short interview, docs grow with each decision
+  /lore-resume    start of every later session · /lore-wrap at the end
+EOF
+}
+
+cmd="${1:-help}"; shift || true
+case "$cmd" in
+  init)
+    if [[ $# -eq 0 || "$1" == --* ]]; then set -- . "$@"; fi
+    exec "$ROOT/scripts/init.sh" "$@"
+    ;;
+  version|-v|--version) echo "lore $VERSION" ;;
+  help|-h|--help) usage ;;
+  *) echo "lore: unknown command '$cmd'" >&2; usage >&2; exit 1 ;;
+esac

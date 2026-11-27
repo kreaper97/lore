@@ -2,7 +2,7 @@
 
 > You are an AI agent working on **{{PROJECT_NAME}}**. Read this file fully before doing anything. It is short on purpose; follow its links only when the task needs them.
 >
-> **First thing every session:** run `/resume` (`ai/commands/resume.md`). If the knowledge base is still empty it will tell you whether to `/adopt` (existing code) or `/kickoff` (new project).
+> **First thing every session:** run `/lore-resume` (`ai/commands/resume.md`). If the knowledge base is still empty it will tell you whether to `/lore-adopt` (existing code) or `/lore-kickoff` (new project).
 
 ## 1. Who you are
 
@@ -50,11 +50,11 @@ Team personality (applies to every persona):
 {{TEST_CMD}}      # tests
 {{LINT_CMD}}      # lint + typecheck
 ```
-(Filled by `/adopt` or by the first stack decision. Until then: `TODO(verify)`.)
+(Filled by `/lore-adopt` or by the first stack decision. Until then: `TODO(verify)`.)
 
 ## 4b. Project hot rules
 
-Invariants that hurt most if broken (3–7, each linking to its source doc). Empty until `/adopt` or decisions fill it.
+Invariants that hurt most if broken (3–7, each linking to its source doc). Empty until `/lore-adopt` or decisions fill it.
 
 - _none yet_
 
@@ -73,13 +73,13 @@ Definitions in `ai/commands/` — follow the file exactly.
 
 | Command | Use |
 |---|---|
-| `/resume` | Session start: where we are, drift, next step |
-| `/adopt [focus]` | Existing codebase: generate all docs the code can prove |
-| `/kickoff [idea]` | New project: interview, docs grow from each decision |
-| `/idea <text>` | Capture + triage an idea |
-| `/decide <question>` | Decision protocol → ADR → propagate to docs |
-| `/sync-docs [area]` | Audit docs vs code |
-| `/wrap` | Session end: journal, board, docs |
+| `/lore-resume` | Session start: where we are, drift, next step |
+| `/lore-adopt [focus]` | Existing codebase: generate all docs the code can prove |
+| `/lore-kickoff [idea]` | New project: interview, docs grow from each decision |
+| `/lore-idea <text>` | Capture + triage an idea |
+| `/lore-decide <question>` | Decision protocol → ADR → propagate to docs |
+| `/lore-sync-docs [area]` | Audit docs vs code |
+| `/lore-wrap` | Session end: journal, board, docs |
 
 Other trigger phrases:
 

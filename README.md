@@ -8,7 +8,7 @@ A drop-in folder structure + instructions that give any AI coding agent (Claude 
 |---|---|
 | `AGENTS.md` | Single entry point every agent reads first. Personality, ground rules, map of the knowledge base. |
 | `ai/knowledge/` | The project's living memory: product, architecture, patterns, flows, security, UX/UI, data, ops. |
-| `ai/commands/` | Entry points: `/resume`, `/adopt`, `/kickoff`, `/idea`, `/decide`, `/sync-docs`, `/wrap` (agent-agnostic; slash adapters generated for Claude Code, pi, Cursor, Copilot). |
+| `ai/commands/` | Entry points: `/lore-resume`, `/lore-adopt`, `/lore-kickoff`, `/lore-idea`, `/lore-decide`, `/lore-sync-docs`, `/lore-wrap` (agent-agnostic; slash adapters generated for Claude Code, pi, Cursor, Copilot). |
 | `ai/agents/` | Specialist personas (Orchestrator, Product, Architect, Engineer, Security, UX, QA, DevOps, Docs Keeper). |
 | `ai/workflows/` | The lifecycle (idea → deploy → learn), decision protocol, handoffs, doc-sync rules. |
 | `ai/work/` | Work in flight: ideas, specs, tasks, decisions — the paper trail. |
@@ -18,23 +18,33 @@ A drop-in folder structure + instructions that give any AI coding agent (Claude 
 ## Layout
 
 ```
-template/            ← copy into any project (or run scripts/init.sh)
-scripts/init.sh      ← installs the template into any repo, new or existing
+bin/lore             ← CLI (lore init / version / help)
+template/            ← what gets installed into a project
+scripts/init.sh      ← installer used by `lore init`
+```
+
+## Install
+
+```bash
+git clone https://github.com/kreaper97/lore ~/lore
+ln -s ~/lore/bin/lore /usr/local/bin/lore     # or any dir on your PATH
 ```
 
 ## Quick start
 
 ```bash
-./scripts/init.sh /path/to/project ["Project Name"]   # name defaults to folder name
+cd /path/to/project && lore init               # or: lore init <dir> ["Project Name"] [--force]
 ```
+
+Slash commands are prefixed `lore-` so they never clash with built-ins (e.g. Claude Code's `/resume`). Agents without slash commands understand the plain words ("adopt", "kickoff", "resume"…).
 
 The script detects which case you're in:
 
 | Case | Command | What happens |
 |---|---|---|
-| **Existing codebase** | `/adopt [focus]` | Deep read-only scan (code, config, CI, schema, git history) → fills every doc the code can prove, with file citations; retro-ADRs; one batch of questions; coverage report in `ai/knowledge/INDEX.md`. |
-| **New project** | `/kickoff [idea]` | Short interview → writes only what's decided. Every later `/decide`, spec or merged task grows the docs (`stub → partial → verified`). |
-| **Every session** | `/resume` … `/wrap` | Resume reads board + journal + git drift and proposes the next step; wrap leaves the journal, board and docs consistent. |
+| **Existing codebase** | `/lore-adopt [focus]` | Deep read-only scan (code, config, CI, schema, git history) → fills every doc the code can prove, with file citations; retro-ADRs; one batch of questions; coverage report in `ai/knowledge/INDEX.md`. |
+| **New project** | `/lore-kickoff [idea]` | Short interview → writes only what's decided. Every later `/lore-decide`, spec or merged task grows the docs (`stub → partial → verified`). |
+| **Every session** | `/lore-resume` … `/lore-wrap` | Resume reads board + journal + git drift and proposes the next step; wrap leaves the journal, board and docs consistent. |
 
 ## Principles
 

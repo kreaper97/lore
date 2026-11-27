@@ -2,7 +2,7 @@
 
 ```
 ai/
-├── commands/         ENTRY POINTS: /resume /adopt /kickoff /idea /decide /sync-docs /wrap
+├── commands/         ENTRY POINTS: /lore-resume /lore-adopt /lore-kickoff /lore-idea /lore-decide /lore-sync-docs /lore-wrap
 ├── knowledge/        WHAT IS TRUE NOW (living docs, always in sync with code)
 │   ├── INDEX.md      coverage: status of every doc (stub / partial / verified)
 │   ├── product/      vision, users, glossary, roadmap
@@ -25,4 +25,4 @@ Rules of thumb:
 - Keep each doc < ~300 lines. Split when it grows; link, don't duplicate.
 - Every doc starts with an `Owner:` persona and `Last verified:` date.
 - Unknowns are written as `TODO(verify): …` — never guessed.
-- Two ways to grow: **/adopt** (existing code → document what exists) or **/kickoff** (new project → a doc is written when something about it is decided). Stubs are fine; invented content is not.
+- Two ways to grow: **/lore-adopt** (existing code → document what exists) or **/lore-kickoff** (new project → a doc is written when something about it is decided). Stubs are fine; invented content is not.

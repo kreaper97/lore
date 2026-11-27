@@ -1,4 +1,4 @@
-# /decide — make and record a decision
+# /lore-decide — make and record a decision
 
 Lead: Orchestrator. Args: the question.
 1. Classify the door (two-way / one-way / human) — `ai/workflows/decision-protocol.md`.
