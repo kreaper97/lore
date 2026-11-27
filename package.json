@@ -1,0 +1,12 @@
+{
+  "name": "@kreaper97/lore",
+  "version": "0.1.0",
+  "description": "AI-ready project knowledge framework: AGENTS.md, agent crew, workflows and living docs for any repo",
+  "bin": { "lore": "bin/lore.js" },
+  "files": ["bin", "template", "README.md"],
+  "engines": { "node": ">=18" },
+  "keywords": ["ai", "agents", "agents-md", "claude-code", "cursor", "copilot", "documentation", "adr"],
+  "repository": { "type": "git", "url": "git+https://github.com/kreaper97/lore.git" },
+  "publishConfig": { "access": "public" },
+  "license": "MIT"
+}

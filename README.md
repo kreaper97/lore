@@ -18,23 +18,36 @@ A drop-in folder structure + instructions that give any AI coding agent (Claude 
 ## Layout
 
 ```
-bin/lore             ← CLI (lore init / version / help)
+bin/lore.js          ← CLI (Node ≥18, zero deps): init / update / version / help
 template/            ← what gets installed into a project
-scripts/init.sh      ← installer used by `lore init`
+package.json         ← npm package @kreaper97/lore (bin: lore)
 ```
 
-## Install
+## Install & quick start
+
+One-off, no install (any package manager):
 
 ```bash
-git clone https://github.com/kreaper97/lore ~/lore
-ln -s ~/lore/bin/lore /usr/local/bin/lore     # or any dir on your PATH
+npx @kreaper97/lore init          # npm
+pnpm dlx @kreaper97/lore init     # pnpm
+yarn dlx @kreaper97/lore init     # yarn
+bunx @kreaper97/lore init         # bun
 ```
 
-## Quick start
+Or pin it in the project so the whole team gets the same version and can upgrade:
 
 ```bash
-cd /path/to/project && lore init               # or: lore init <dir> ["Project Name"] [--force]
+pnpm add -D @kreaper97/lore       # or npm i -D / yarn add -D / bun add -d
+pnpm lore init
+# later, after bumping the version:
+pnpm lore update                  # refreshes commands, agents, workflows, templates, adapters
 ```
+
+Before it's on the npm registry, install straight from GitHub: `pnpm add -D github:kreaper97/lore` (or `npx github:kreaper97/lore init`).
+
+`lore init [dir] ["Project Name"] [--force]` · `lore update [dir]` never touches `AGENTS.md`, `ai/knowledge/` or `ai/work/` — those are yours.
+
+Non-JS project? `npx`/`pnpm dlx` only needs Node on the machine; nothing is added to your project besides the docs.
 
 Slash commands are prefixed `lore-` so they never clash with built-ins (e.g. Claude Code's `/resume`). Agents without slash commands understand the plain words ("adopt", "kickoff", "resume"…).
 
