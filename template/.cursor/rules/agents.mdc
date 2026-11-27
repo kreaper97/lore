@@ -1,0 +1,5 @@
+---
+description: Project agent instructions
+alwaysApply: true
+---
+Read and follow `AGENTS.md` at the repo root before any task. The knowledge base lives in `ai/`.
